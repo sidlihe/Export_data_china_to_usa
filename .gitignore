@@ -1,0 +1,35 @@
+# Ignore Python virtual environment
+myvenv/
+venv/
+.env/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+*.so
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore logs and temp files
+*.log
+*.tmp
+*.bak
+
+# Ignore any secret or config files
+*.env
+config.json
+
+# Ignore VS Code settings (if applicable)
+.vscode/
+
+reports/
+shortlisted/
+rough_exports.ipynb
+result_dict_year.json
+csv/
+report.ipynb
