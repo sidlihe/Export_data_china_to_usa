@@ -2,6 +2,7 @@
 myvenv/
 venv/
 .env/
+env/
 
 # Ignore system files
 .DS_Store

@@ -27,8 +27,6 @@ def get_filter_options():
         "year": sorted(df['year'].dropna().unique()),
         "hs2_display": hs2_display,
         "hs2_mapping": hs2_mapping,
-        # "exporter": sorted(df['exporter'].dropna().unique()),
-        # "importer": sorted(df['importer'].dropna().unique())
     }
 
 # Main UI
@@ -40,8 +38,6 @@ options = get_filter_options()
 # Multi-select filters
 selected_years = st.multiselect("Select Years", options['year'])
 selected_hs2_disp = st.multiselect("Select HS2 Codes", options['hs2_display'])
-# selected_exporters = st.multiselect("Select Exporters", ["None"] + options['exporter'])
-# selected_importers = st.multiselect("Select Importers", ["None"] + options['importer'])
 
 # Map selected HS2 display names back to actual HS2 codes
 selected_hs2 = [options['hs2_mapping'][d] for d in selected_hs2_disp]
@@ -60,16 +56,6 @@ if st.button("🔍 Show Filtered Data"):
         placeholders = ','.join(['%s'] * len(selected_hs2))
         where_clauses.append(f"HS2 IN ({placeholders})")
         values.extend(selected_hs2)
-
-    # if selected_exporters and selected_exporters != ["None"]:
-    #     placeholders = ','.join(['%s'] * len(selected_exporters))
-    #     where_clauses.append(f"exporter IN ({placeholders})")
-    #     values.extend(selected_exporters)
-
-    # if selected_importers and selected_importers != ["None"]:
-    #     placeholders = ','.join(['%s'] * len(selected_importers))
-    #     where_clauses.append(f"importer IN ({placeholders})")
-    #     values.extend(selected_importers)
 
     where_sql = " AND ".join(where_clauses)
     query = "SELECT * FROM filtered_export_data"
